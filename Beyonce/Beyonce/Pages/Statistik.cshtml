@@ -1,0 +1,24 @@
+@page
+@model SimpleReportViewModel
+@{
+    ViewData["Title"] = "Statistik";
+}
+
+<h1>Statistik</h1>
+<div class="box-body">
+
+    <div class="chart-container">
+        <canvas id="chart" style="width:100%; height:500px"></canvas>
+    </div>
+</div>
+<div>
+    <input type="button" id="prozent" name="Prozentwerte" value="Prozentwerte" style="width:150px; background-color:darkslategray"/>
+    <input type="button" id="absolut" name="Absolutwerte" value="Absolute Werte" style="width:150px"/>
+</div>
+<br />
+<div>
+    <input type="button" id="kreis" name="kreisdiagramm" value="Kreisdiagramm" style="width:150px" />
+    <input type="button" id="balken" name="balkendiagramm" value="Balkendiagramm" style="width:150px" />
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
