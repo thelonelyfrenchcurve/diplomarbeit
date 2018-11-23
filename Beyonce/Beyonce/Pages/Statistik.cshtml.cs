@@ -2,14 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
-namespace Beyonce.Pages
+using Beyonce.Statistik;
+namespace Beyonce.Statistik
 {
-    public class SimpleReportViewModel
+    public class LandModel
     {
-        public string DimensionOne { get; set; }
-        public int Quantity { get; set; }
+        public IList<Land> landListe = new List<Land>();
+        public LandModel()
+        {
+            landListe.Add(new Land("Deutschland", 13));
+            landListe.Add(new Land("Schweiz", 11));
+            landListe.Add(new Land("Oesterreich", 123));
+        }
     }
 }
