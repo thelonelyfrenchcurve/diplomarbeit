@@ -1,0 +1,42 @@
+﻿@page
+@model Beyonce.Pages.Laenderverwaltung.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Land[0].LandBez)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Land[0].Kuerzel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Land) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LandBez)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kuerzel)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.LandId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.LandId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.LandId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
