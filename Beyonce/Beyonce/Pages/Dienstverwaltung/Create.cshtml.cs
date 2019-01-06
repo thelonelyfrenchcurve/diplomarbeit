@@ -41,9 +41,10 @@ namespace Beyonce.Pages.Dienstverwaltung
             return RedirectToPage("./Index");
         }
 
-        public List<Land> getLänder()
+        public IEnumerable<SelectListItem> getLänder()
         {
-            return _context.Land.ToList();
+            IEnumerable<SelectListItem> retVal = new SelectList(_context.Land.ToList());
+            return retVal;
         }
     }
 }
