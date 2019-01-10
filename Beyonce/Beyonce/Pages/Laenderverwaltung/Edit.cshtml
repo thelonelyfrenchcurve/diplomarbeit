@@ -1,0 +1,40 @@
+﻿@page
+@model Beyonce.Pages.Laenderverwaltung.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Land</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Land.LandId" />
+            <div class="form-group">
+                <label asp-for="Land.LandBez" class="control-label"></label>
+                <input asp-for="Land.LandBez" class="form-control" />
+                <span asp-validation-for="Land.LandBez" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Land.Kuerzel" class="control-label"></label>
+                <input asp-for="Land.Kuerzel" class="form-control" />
+                <span asp-validation-for="Land.Kuerzel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

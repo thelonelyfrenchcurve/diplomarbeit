@@ -1,0 +1,80 @@
+﻿@page
+@model Beyonce.Pages.Dienstverwaltung.IndexModel
+
+@{
+    ViewData["Title"] = "Dienstverwaltung";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Neuen Dienst hinzufügen</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Dienst[0].Dienstart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dienst[0].Bezeichnung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dienst[0].Url)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Dienst)
+        {
+            if (!Model.IsPingable(item.Url)) {
+                @:<tr bgcolor="#ff5959">
+            }
+            else
+            {
+                @:<tr>
+            }
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dienstart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bezeichnung)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Url)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.DienstId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.DienstId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.DienstId">Delete</a>
+                </td>
+                <td>
+                    <input type="checkbox" id="check" />
+                </td>
+             @:</tr>
+        }
+    </tbody>
+</table>
+
+<button type="button" onclick="löscheDienste()" >Ausgewählte Dienste entfernen</button>
+<button type="button" onclick="löscheDienste()">Ausgewählte Dienste ungültig setzen</button>
+
+<script>
+    function löscheDienste() {
+        checkboxes = document.getElementsByTagName("input");
+
+        for (var i = 0; i < checkboxes.length; i++) {
+            var checkbox = checkboxes[i];
+            // var currentRow = this.parentNode.parentNode;
+            if (checkbox.checked) {
+                var currentRow = checkbox.parentNode.parentNode;
+                var secondColumn = currentRow.getElementsByTagName("td")[1];
+
+                alert("My text is: " + secondColumn.textContent);
+                var text = "@Model.Dienst.Remove(Model.Dienst.ToList().Find(item => item.Bezeichnung == "JSVar"))";
+                text = text.replace("JSVar", secondColumn.textContent);
+            }
+        }
+    }
+</script>

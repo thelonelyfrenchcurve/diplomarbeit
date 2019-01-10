@@ -1,0 +1,45 @@
+﻿@page
+@model Beyonce.Pages.Dienstverwaltung.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Dienst</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Dienst.DienstId" />
+            <div class="form-group">
+                <label asp-for="Dienst.Dienstart" class="control-label"></label>
+                <input asp-for="Dienst.Dienstart" class="form-control" />
+                <span asp-validation-for="Dienst.Dienstart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dienst.Bezeichnung" class="control-label"></label>
+                <input asp-for="Dienst.Bezeichnung" class="form-control" />
+                <span asp-validation-for="Dienst.Bezeichnung" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dienst.Url" class="control-label"></label>
+                <input asp-for="Dienst.Url" class="form-control" />
+                <span asp-validation-for="Dienst.Url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

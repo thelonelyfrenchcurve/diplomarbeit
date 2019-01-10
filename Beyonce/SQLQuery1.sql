@@ -1,0 +1,1 @@
+﻿INSERT INTO LAND VALUES (1,'Österreich','AT');
